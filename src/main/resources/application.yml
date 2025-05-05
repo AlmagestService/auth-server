@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: auth-server
+  profiles:
+    active: local
+   datasource:
+     driver-class-name: org.mariadb.jdbc.Driver
+     url: jdbc:mariadb://${DB_HOST}:${DB_PORT}/${AUTH_DB_NAME}
+     username: ${DB_USER}
+     password: ${DB_PASS}
+  
+  
+  
+   jpa:
+     hibernate:
+       ddl-auto: ${AUTH_DDL_TYPE}
+  
+   mail:
+     host: ${ALMAGEST_MAIL_HOST}
+     port: ${ALMAGEST_MAIL_PORT}
+     username: ${ALMAGEST_MAIL_USER}
+     password: ${ALMAGEST_MAIL_KEY} #이메일 key
+     properties:
+       mail:
+         smtp:
+           auth: true
+           starttls:
+             enable: true
+  
+   #Swagger 3.0
+   mvc:
+     pathmatch:
+       matching-strategy: ant_path_matcher
+   data:
+     redis:
+       host: ${REDIS_HOST}
+       port: ${REDIS_HOST}
+  springdoc:
+   api-docs:
+     enabled: false
+  
+  management:
+   health:
+     db:
+       enabled: true  # 데이터베이스 연결 상태 확인
+     redis:
+       enabled: true # redis 연결 상태 확인
+  
+  jwt:
+   public-key : ${JWT_PUBLIC_KEY}
+   access-exp: ${JWT_ACCESS_EXP} # 10 mins
+   refresh-exp: ${JWT_REFRESH_EXP} # 180 days
+  aes:
+   secret-key: ${AES_KEY}
+  
+  server:
+   port: ${AUTH_SERVER_PORT}
+  
+  fcm: 
+    secret: ${ALMAGEST_FCM_KEY}
+  
+  #aws:
+  #  s3:
+  #    bucket-name: bbb
+  #    folder: aaa
+  #    access-key: 12345
+  #    secret-key: 12345
+  #    region: a2
