@@ -1,1 +1,13 @@
+# Almagest Auth Server
+
+Spring Boot 기반 인증 서버입니다. 
+JWT, 이메일 인증, OTP, FCM 등 다양한 인증 및 보안 기능을 제공합니다.
+
+## 주요 기능
+- 회원가입 및 로그인
+- JWT 기반 인증/인가
+- OTP기반 이메일 인증
+- MFA로 OTP 푸시알림 지원(FCM)
+
+
 
